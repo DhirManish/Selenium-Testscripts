@@ -22,12 +22,12 @@ public class Test {
 		
 		//drv.findElement(By.id("hplogo")).click();
 		
-		drv.findElement(By.xpath("/html/body/div/div[3]/form/div[2]/div[2]/div[1]/div[1]/div[3]/div/div/div[3]/div/input[3]")).sendKeys("Automation Testing");
+		drv.findElement(By.xpath("/html/body/div/div[3]/form/div[2]/div[2]/div[1]/div[1]/div[2]/div/div/div[3]"));
 				
 		drv.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
-		drv.findElement(By.className("sbico-c")).click();
-				   
+		drv.findElement(By.xpath("/html/body/div/div[6]/span/center/div[3]/div[1]/div/a[9]")).click();
+		
 	}
 	
 }
