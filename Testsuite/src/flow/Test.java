@@ -1,33 +1,37 @@
 package flow;
 
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.firefox.*;
-
 
 public class Test {
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws InterruptedException{
+			
+		String Countryname = "/html/body/div/div[6]/div[1]/div/div/div/div/div/div/span";
 		
-		System.setProperty("webdriver.gecko.driver" , "D:\\Gecko 16\\geckodriver.exe");
+		String font = "ਪੰਜਾਬੀ";
+	
+		System.setProperty("webdriver.gecko.driver" , "D:\\Java Selenium\\geckodriver-v0.16.1-win64\\geckodriver.exe");
 		
 		WebDriver drv = new FirefoxDriver();
 		
 		drv.get("https://www.google.com");
+
+		drv.findElement(By.linkText(font)).click();
 		
-		//drv.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		String country = drv.findElement(By.xpath(Countryname)).getText();
+
+		System.out.println(country);
 		
-		//drv.findElement(By.id("hplogo")).click();
+		if(country.equals("ਭਾਰਤ")){
+			
+			System.out.println("font is chnaged");
+		}
 		
-		drv.findElement(By.xpath("/html/body/div/div[3]/form/div[2]/div[2]/div[1]/div[1]/div[2]/div/div/div[3]"));
-				
-		drv.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		
-		drv.findElement(By.xpath("/html/body/div/div[6]/span/center/div[3]/div[1]/div/a[9]")).click();
-		
+		drv.close();
 	}
 	
 }
