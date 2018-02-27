@@ -1,6 +1,5 @@
 package TableAutomation;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,21 +27,13 @@ public class Table {
 	@Test
 	public void Indetify_Control() {
 		
-		List<WebElement> wbody = null;
-		List<WebElement>  wrow = null;
+		WebElement  wrow = null;
 		WebElement wcol = null;
 		
-		List<WebElement> wtable = wd.findElements(By.tagName("table"));
-		for (WebElement itable: wtable) {
-			wbody = (List<WebElement>) itable.findElement(By.tagName("tbody"));
-			for(WebElement ibody: wbody) {
-				wrow.add(ibody.findElement(By.tagName("tr")));
-				for(WebElement irow: wrow) {
-					wcol = irow.findElement(By.tagName("td"));
+		WebElement wtable = (WebElement) wd.findElements(By.tagName("table"));
+		wrow = 	(WebElement) wtable.findElement(By.tagName("tr"));
+					wcol = wrow.findElement(By.tagName("td"));
 						wcol.findElement(By.linkText("Atlassian Cloud")).click();
-				}
-			}
-		}
 	
 		wd.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 		
